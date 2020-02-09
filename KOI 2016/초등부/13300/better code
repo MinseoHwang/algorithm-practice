@@ -1,0 +1,38 @@
+// KOI 2016 초등부 문제 
+// 백준 13300: 방 배정
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	int n; // 학생 수
+	int k; // 방 마다 배정할 수 있는 최대 인원 수
+	int s; // 성별
+	int y; // 나이
+
+	int b[6] = { 0 }; // 남자 학년 별로 분류
+	int g[6] = { 0 }; // 여자 학년 별로 분류
+
+	int m[2][6] = { 0 };
+
+	cin >> n; cin >> k;
+
+	for (int i = 0; i < n; i++) {
+		cin >> s; cin >> y;
+
+		m[s][y - 1]++;
+	}
+
+	int room = 0; // 최소 방 수
+
+	float temp;
+
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 6; j++) {
+			temp = m[i][j] / (float)k;
+			room += ceil(temp); // 올림
+		}
+	}
+
+	cout << room << endl;
+}
