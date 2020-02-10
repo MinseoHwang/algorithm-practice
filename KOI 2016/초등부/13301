@@ -1,0 +1,25 @@
+// KOI 2016 초등부 문제 
+// 백준 13301: 타일 장식물
+
+#include <iostream>
+using namespace std;
+int main() {
+	int n;
+	long long int perimeter = 0; // 전체 둘레
+
+	long long int w = 1; // 전체 도형 폭
+	long long int h = 1; // 전체 도형 높이
+	cin >> n;
+
+	for (int i = 0; i < n - 1; i++) {
+		if (i % 2 == 0) {
+			h += w;
+		}
+		else {
+			w += h;
+		}
+	}
+	perimeter = w * 2 + h * 2;
+
+	cout << perimeter << endl;
+}
